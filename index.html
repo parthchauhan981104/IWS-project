@@ -52,23 +52,28 @@
   </div>
   
   <script src="scripts/date_fns.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBHlIXRT6Vix3gRtvrakQ0zppJ04L3I9Yg",
-      authDomain: "udemy-modern-javascript-5951c.firebaseapp.com",
-      databaseURL: "https://udemy-modern-javascript-5951c.firebaseio.com",
-      projectId: "udemy-modern-javascript-5951c",
-      storageBucket: "udemy-modern-javascript-5951c.appspot.com",
-      messagingSenderId: "201151978186",
-      appId: "1:201151978186:web:13be11ca364c5254b27233",
-      measurementId: "G-PMVVEB74SH"
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDzhVaWjRm1RcK7Do6axiBEZmcGahv4AqM",
+      authDomain: "iws-chat.firebaseapp.com",
+      databaseURL: "https://iws-chat.firebaseio.com",
+      projectId: "iws-chat",
+      storageBucket: "iws-chat.appspot.com",
+      messagingSenderId: "407800149726",
+      appId: "1:407800149726:web:e716d0ae483acec79ab44f"
     };
-    firebase.initializeApp(config);
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
   </script>
+
   <script src="scripts/chat.js"></script>
   <script src="scripts/ui.js"></script>
   <script src="scripts/app.js"></script>
