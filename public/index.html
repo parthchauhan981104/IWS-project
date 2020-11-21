@@ -9,8 +9,9 @@
 </head>
 <body>
 
+
   <!-- container & title -->
-  <div class="container my-4">
+  <div class="container my-4 p-2">
     <h1 class="my-4 text-center">Ninja Chat</h1>
     <!-- buttons for chatrooms -->
     <div class="chat-rooms mb-3 text-center">
@@ -21,34 +22,37 @@
       <button class="btn" id="ninjas">#ninjas</button>
     </div>
     <!-- chat list / window -->
-    <div class="chat-window">
+    <div class="chat-window ">
       <ul class="chat-list list-group"></ul>
     </div>
     <!-- new chat form -->
-    <form class="new-chat my-3">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Your message:</div>
+    <div class="fixed-bottom w-50 m-auto text-center">
+      <form class="new-chat my-3">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Your message:</div>
+          </div>
+          <input type="text" id="message" class="form-control" required>
+          <div class="input-group-append">
+            <input type="submit" class="btn btn-lg" value="send">
+          </div>
         </div>
-        <input type="text" id="message" class="form-control" required>
-        <div class="input-group-append">
-          <input type="submit" class="btn" value="send">
+      </form>
+      <!-- update name form -->
+      <form class="new-name mb-3 float-right w-50">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Update name:</div>
+          </div>
+          <input type="text" id="name" class="form-control" required>
+          <div class="input-group-append">
+            <input type="submit" class="btn" value="update">
+          </div>
         </div>
-      </div>
-    </form>
-    <!-- update name form -->
-    <form class="new-name my-3">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">Update name:</div>
-        </div>
-        <input type="text" id="name" class="form-control" required>
-        <div class="input-group-append">
-          <input type="submit" class="btn" value="update">
-        </div>
-      </div>
-      <div class="update-mssg text-center my-2"></div>
-    </form>
+        <div class="update-mssg text-center my-2"></div>
+      </form>
+    </div>
+    
   </div>
   
   <script src="scripts/date_fns.js"></script>
@@ -56,9 +60,12 @@
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+  <script src="scripts/google-auth.js"></script>
+
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script>
+  <script defer>
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyDzhVaWjRm1RcK7Do6axiBEZmcGahv4AqM",
@@ -72,6 +79,38 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log("User signed in");
+        console.log(user);
+      } else {
+        // No user is signed in.
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          console.log("User signed in");
+          console.log(user);
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          //console.log(errorCode);
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+      }
+    });
+    
   </script>
 
   <script src="scripts/chat.js"></script>

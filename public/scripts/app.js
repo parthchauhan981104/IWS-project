@@ -1,5 +1,6 @@
 // dom queries
 const chatList = document.querySelector('.chat-list');
+const chatWindow = document.querySelector('.chat-window');
 const newChatForm = document.querySelector('.new-chat');
 const newNameForm = document.querySelector('.new-name');
 const updateMssg = document.querySelector('.update-mssg');
@@ -10,7 +11,10 @@ newChatForm.addEventListener('submit', e => {
   e.preventDefault();
   const message = newChatForm.message.value.trim();
   chatroom.addChat(message)
-    .then(() => newChatForm.reset()) 
+    .then(() => {
+      newChatForm.reset();
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }) 
     //async methods always return promise. If the return value of an 
     //async function is not explicitly a promise, it will be implicitly 
     //wrapped in a promise, which will be resolved with the value returned 
@@ -37,12 +41,16 @@ rooms.addEventListener('click', e => {
   if(e.target.tagName === 'BUTTON'){
     chatUI.clear();
     chatroom.updateRoom(e.target.getAttribute('id'));  // unsub from old room realtime listener
-    chatroom.getChats(chat => chatUI.render(chat)); // sub to new room and render
+    chatroom.getChats(chat => {
+      chatUI.render(chat);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }); // sub to new room and render
+    chatWindow.scrollTop = chatWindow.scrollHeight;
   }
 });
 
 // check local storage for name
-const username = localStorage.username ? localStorage.username : 'anon';
+const username = localStorage.username ? localStorage.username : 'anonymous';
 //localStorage is unique for each domain-port combination
 
 // class instances
@@ -50,4 +58,7 @@ const chatUI = new ChatUI(chatList);
 const chatroom = new Chatroom('gaming', username);
 
 // get chats & render
-chatroom.getChats(data => chatUI.render(data));  //pass callback that will run inside getChats
+chatroom.getChats(data => {
+  chatUI.render(data);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+});  //pass callback that will run inside getChats
