@@ -20,7 +20,7 @@
       <button class="signout-btn btn mt-1 float-right">Sign Out</button>
     </div>
 
-    <div class="my-4 text-center">
+    <div class="my-4 text-center header">
       <h1 class="my-4 text-center">Ninja Chat</h1>
       <!-- buttons for chatrooms -->
       <div class="my-2">Choose a chatroom:</div>
@@ -44,7 +44,7 @@
           <div class="input-group-prepend ur-msg">
             <div class="input-group-text ur-msg">Your message:</div>
           </div>
-          <textarea name="message" id="message" cols="30" class="form-control" rows="1" placeholder="Enter message..." required></textarea>
+          <textarea name="newmessage" id="newmessage" cols="30" class="form-control" rows="1" placeholder="Enter message..." required></textarea>
           <!-- <input type="text" id="message" class="form-control" required> -->
           <div class="input-group-append">
             <button type="submit" class="btn btn-lg">
@@ -112,6 +112,7 @@
         setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
+          document.querySelector('.chat-window').scrollTop = document.querySelector('.chat-window').scrollHeight;
         }, 1000);
 
       } else {
@@ -133,6 +134,7 @@
           setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
+          document.querySelector('.chat-window').scrollTop = document.querySelector('.chat-window').scrollHeight;
         }, 1000);
 
         }).catch(function(error) {

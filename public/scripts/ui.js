@@ -11,10 +11,13 @@ class ChatUI {
       { addSuffix:true } // adds 'ago'. example - 1 day ago
     );
     const html = `
-      <li class="list-group-item">
-        <span class="username">${data.username}</span>
-        <span class="message">${data.message}</span>
-        <div class="time">${when}</span>
+      <li class="list-group-item container">
+        <div class="user-info-div mr-2 my-1">
+          <img class="user-img" src="ninja1.png">
+          <span class="username mx-1">${data.username}</span>
+          <span class="time">${when}</span>
+        </div>
+        <p class="message mt-1 ml-5">${data.message}</p>
       </li>
     `;
     this.list.innerHTML += html;

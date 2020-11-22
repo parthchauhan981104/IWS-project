@@ -31,7 +31,7 @@ body {
   display: none;
   /* display: flex; */
   flex-direction: column;
-  max-height: 70%;
+  max-height: 80%;
   background: #f9f9f9;
 }
 h1 {
@@ -39,7 +39,7 @@ h1 {
 }
 .nav-user{
   background: #bb3b0e;
-  font-size: 0.8rem;
+  font-size: 0.8em;
 }
 .ur-msg{
   background: #f9f9f9;
@@ -60,6 +60,12 @@ h1 {
 }
 .username{
   font-weight: bold;
+  font-size: 1.2em;
+}
+.user-img{
+  height:40px;
+  width: 40px;
+  border-radius: 100%;
 }
 .time{
   font-size: 0.7em;
@@ -72,11 +78,21 @@ h1 {
   overflow-y:auto;
   overflow-x: hidden;
 }
-#message{
+#newmessage{
   font-size: 1.8em;
 }
 .list-group-item{
-  min-width: 100vw;
+  min-width: 100vh;
+}
+.list-group-item:hover{
+  background-color: #eeeeee;
+}
+p.message{
+  max-width: 25%;
+  font-size: 1.5em;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 .time{
   font-size: 0.8em;

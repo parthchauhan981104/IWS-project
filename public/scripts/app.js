@@ -17,12 +17,12 @@ function submitOnEnter(event){
   }
 }
 
-document.getElementById("message").addEventListener("keypress", submitOnEnter);
+document.getElementById("newmessage").addEventListener("keypress", submitOnEnter);
 
 // add a new chat
 newChatForm.addEventListener('submit', e => {
   e.preventDefault();
-  const message = newChatForm.message.value.trim();
+  const message = newChatForm.newmessage.value.trim();
   username = userp.innerHTML;
   console.log(username); 
   chatroom.addChat(message, username)
