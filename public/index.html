@@ -8,6 +8,10 @@
   <title>Ninja Chat</title>
 </head>
 <body>
+  <!-- initial loading screen before authentication -->
+  <div class="loading-div container text-center">
+    <img class="loading-img" src="loading.gif" alt="">
+  </div>
 
   <!-- container & title -->
   <div class="main-container container my-4 p-2">
@@ -29,7 +33,7 @@
     </div>
 
     <!-- new chat form -->
-    <div class="fixed-bottom w-50 m-auto text-center">
+    <div class="fixed-bottom w-50 m-auto text-center new-chat-div">
       <form class="new-chat my-3">
         <div class="input-group">
           <div class="input-group-prepend ur-msg">
@@ -96,9 +100,13 @@
         // User is signed in.
         console.log("User signed in");
         console.log(user);
-        const userp = document.querySelector('.username');
-        userp.innerHTML = user['displayName'];
-        // console.log(userp.innerHTML);
+
+        setTimeout(() => {
+          document.querySelector('.username').innerHTML = user['displayName'];
+          document.querySelector('.loading-div').style.display = 'none';
+          document.querySelector('.main-container').style.display = 'flex';
+        }, 1000);
+
       } else {
         // No user is signed in.
         firebase.auth().signInWithRedirect(provider);
@@ -112,9 +120,13 @@
           var user = result.user;
           console.log("User signed in");
           console.log(user);
-          const userp = document.querySelector('.username');
-          userp.innerHTML = user['displayName'];
-          // console.log(userp.innerHTML);
+
+          setTimeout(() => {
+          document.querySelector('.username').innerHTML = user['displayName'];
+          document.querySelector('.loading-div').style.display = 'none';
+          document.querySelector('.main-container').style.display = 'flex';
+        }, 1000);
+
         }).catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
@@ -130,8 +142,8 @@
     
   </script>
 
-  <script src="scripts/chat.js"></script>
-  <script src="scripts/ui.js"></script>
+  <script defer src="scripts/chat.js"></script>
+  <script defer src="scripts/ui.js"></script>
   <script defer src="scripts/app.js"></script>
 </body>
 </html>
