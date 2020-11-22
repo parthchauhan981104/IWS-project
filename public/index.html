@@ -9,22 +9,25 @@
 </head>
 <body>
 
-
   <!-- container & title -->
-  <div class="container my-4 p-2">
-    <h1 class="my-4 text-center">Ninja Chat</h1>
-    <!-- buttons for chatrooms -->
-    <div class="chat-rooms mb-3 text-center">
+  <div class="main-container container my-4 p-2">
+    <div class="my-4 text-center">
+      <h1 class="my-4 text-center">Ninja Chat</h1>
+      <!-- buttons for chatrooms -->
       <div class="my-2">Choose a chatroom:</div>
-      <button class="btn" id="general">#general</button>
-      <button class="btn" id="gaming">#gaming</button>
-      <button class="btn" id="music">#music</button>
-      <button class="btn" id="ninjas">#ninjas</button>
+      <div class="chat-rooms mb-3 text-center d-flex justify-content-center">
+        <button class="chat-room btn" id="general">#general</button>
+        <button class="chat-room btn" id="gaming">#gaming</button>
+        <button class="chat-room btn" id="music">#music</button>
+        <button class="chat-room btn" id="movies">#movies</button>
+      </div>
     </div>
+    
     <!-- chat list / window -->
     <div class="chat-window ">
       <ul class="chat-list list-group"></ul>
     </div>
+
     <!-- new chat form -->
     <div class="fixed-bottom w-50 m-auto text-center">
       <form class="new-chat my-3">
@@ -34,12 +37,17 @@
           </div>
           <input type="text" id="message" class="form-control" required>
           <div class="input-group-append">
-            <input type="submit" class="btn btn-lg" value="send">
+            <button type="submit" class="btn btn-lg">
+              Send
+            </button>
+            <!-- <input type="submit" class="btn btn-lg" value="send"> -->
           </div>
         </div>
       </form>
-      <!-- update name form -->
-      <form class="new-name mb-3 float-right w-50">
+    </div>
+
+    <!-- <div class="fixed-bottom w-50 m-auto text-center">
+       <form class="new-name mb-3 float-right">
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">Update name:</div>
@@ -51,8 +59,9 @@
         </div>
         <div class="update-mssg text-center my-2"></div>
       </form>
-    </div>
-    
+    </div> -->
+    <p class="username" style="display: none;"></p>
+
   </div>
   
   <script src="scripts/date_fns.js"></script>
@@ -87,20 +96,28 @@
         // User is signed in.
         console.log("User signed in");
         console.log(user);
+        const userp = document.querySelector('.username');
+        userp.innerHTML = user['displayName'];
+        // console.log(userp.innerHTML);
       } else {
         // No user is signed in.
-        firebase.auth().signInWithPopup(provider).then(function(result) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = result.credential.accessToken;
+        firebase.auth().signInWithRedirect(provider);
+        firebase.auth().getRedirectResult().then(function(result) {
+          if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // ...
+          }
           // The signed-in user info.
           var user = result.user;
           console.log("User signed in");
           console.log(user);
-          // ...
+          const userp = document.querySelector('.username');
+          userp.innerHTML = user['displayName'];
+          // console.log(userp.innerHTML);
         }).catch(function(error) {
           // Handle Errors here.
           var errorCode = error.code;
-          //console.log(errorCode);
           var errorMessage = error.message;
           // The email of the user's account used.
           var email = error.email;
@@ -115,6 +132,6 @@
 
   <script src="scripts/chat.js"></script>
   <script src="scripts/ui.js"></script>
-  <script src="scripts/app.js"></script>
+  <script defer src="scripts/app.js"></script>
 </body>
 </html>

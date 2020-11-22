@@ -5,12 +5,16 @@ const newChatForm = document.querySelector('.new-chat');
 const newNameForm = document.querySelector('.new-name');
 const updateMssg = document.querySelector('.update-mssg');
 const rooms = document.querySelector('.chat-rooms');
+const userp = document.querySelector('.username');
+var username;
 
 // add a new chat
 newChatForm.addEventListener('submit', e => {
   e.preventDefault();
   const message = newChatForm.message.value.trim();
-  chatroom.addChat(message)
+  username = userp.innerHTML;
+  console.log(username); 
+  chatroom.addChat(message, username)
     .then(() => {
       newChatForm.reset();
       chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -23,18 +27,18 @@ newChatForm.addEventListener('submit', e => {
     .catch(err => console.log(err));
 });
 
-// update the username
-newNameForm.addEventListener('submit', e => {
-  e.preventDefault();
-  // update name via chatroom
-  const newName = newNameForm.name.value.trim(); //can use .name as input field has id=name
-  chatroom.updateName(newName);
-  // reset the form
-  newNameForm.reset();
-  // show then hide the update message
-  updateMssg.innerText = `Your name was updated to ${newName}`;
-  setTimeout(() => updateMssg.innerText = '', 3000);
-});
+// // update the username
+// newNameForm.addEventListener('submit', e => {
+//   e.preventDefault();
+//   // update name via chatroom
+//   const newName = newNameForm.name.value.trim(); //can use .name as input field has id=name
+//   chatroom.updateName(newName);
+//   // reset the form
+//   newNameForm.reset();
+//   // show then hide the update message
+//   updateMssg.innerText = `Your name was updated to ${newName}`;
+//   setTimeout(() => updateMssg.innerText = '', 3000);
+// });
 
 // update the chat room
 rooms.addEventListener('click', e => {
@@ -49,9 +53,6 @@ rooms.addEventListener('click', e => {
   }
 });
 
-// check local storage for name
-const username = localStorage.username ? localStorage.username : 'anonymous';
-//localStorage is unique for each domain-port combination
 
 // class instances
 const chatUI = new ChatUI(chatList);

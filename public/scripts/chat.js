@@ -1,13 +1,14 @@
 class Chatroom {
   constructor(room, username){
     this.room = room;
-    this.username = username;
+    this.username;
     this.chats = db.collection('chats');
     this.unsub;
   }
-  async addChat(message){
+  async addChat(message, username){
     // format a chat object
     const now = new Date();
+    this.username = username;
     const chat = {
       message: message,
       username: this.username,
@@ -31,10 +32,10 @@ class Chatroom {
         });
     });
   }
-  updateName(username){
-    this.username = username;
-    localStorage.username = username;
-  }
+  // updateName(username){
+  //   this.username = username;
+  //   localStorage.username = username;
+  // }
   updateRoom(room){
     this.room = room;
     console.log('room updated');
