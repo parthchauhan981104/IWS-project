@@ -37,6 +37,10 @@ body {
 h1 {
   color: 708160;
 }
+.nav-user{
+  background: #bb3b0e;
+  font-size: 0.8rem;
+}
 .ur-msg{
   background: #f9f9f9;
 }

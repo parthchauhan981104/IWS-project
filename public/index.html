@@ -15,8 +15,8 @@
 
   <!-- container & title -->
   <div class="main-container container my-4 p-2">
-    <div class="m-auto fixed-top">
-      <p class='nav-user float-right'></p>
+    <div class="navbar m-auto fixed-top text-center">
+      <strong><i><p class='btn-sm btn-dark nav-user align-middle p-2 mt-3'></p></i></strong>
       <button class="signout-btn btn mt-1 float-right">Sign Out</button>
     </div>
 
@@ -44,7 +44,8 @@
           <div class="input-group-prepend ur-msg">
             <div class="input-group-text ur-msg">Your message:</div>
           </div>
-          <input type="text" id="message" class="form-control" required>
+          <textarea name="message" id="message" cols="30" class="form-control" rows="1" placeholder="Enter message..." required></textarea>
+          <!-- <input type="text" id="message" class="form-control" required> -->
           <div class="input-group-append">
             <button type="submit" class="btn btn-lg">
               Send
@@ -106,6 +107,7 @@
         console.log("User signed in");
         console.log(user);
         document.querySelector('.username').innerHTML = user['displayName'];
+        document.querySelector('.nav-user').innerHTML = user['displayName'];
 
         setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
@@ -126,6 +128,7 @@
           console.log("User signed in");
           console.log(user);
           document.querySelector('.username').innerHTML = user['displayName'];
+          document.querySelector('.nav-user').innerHTML = user['displayName'];
 
           setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
