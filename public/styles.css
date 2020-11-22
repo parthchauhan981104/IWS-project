@@ -18,8 +18,14 @@ body {
   max-height: 70%;
   background: #f9f9f9;
 }
+h1 {
+  color: 708160;
+}
+.ur-msg{
+  background: #f9f9f9;
+}
 .btn{
-  background: #43d9be;
+  background: #bb3b0e;
   margin: 0 5px 0 5px;
   color: white;
   cursor: pointer;
