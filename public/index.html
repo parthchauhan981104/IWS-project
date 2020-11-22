@@ -15,6 +15,11 @@
 
   <!-- container & title -->
   <div class="main-container container my-4 p-2">
+    <div class="m-auto fixed-top">
+      <p class='nav-user float-right'></p>
+      <button class="signout-btn btn mt-1 float-right">Sign Out</button>
+    </div>
+
     <div class="my-4 text-center">
       <h1 class="my-4 text-center">Ninja Chat</h1>
       <!-- buttons for chatrooms -->
@@ -100,9 +105,9 @@
         // User is signed in.
         console.log("User signed in");
         console.log(user);
+        document.querySelector('.username').innerHTML = user['displayName'];
 
         setTimeout(() => {
-          document.querySelector('.username').innerHTML = user['displayName'];
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
         }, 1000);
@@ -120,9 +125,9 @@
           var user = result.user;
           console.log("User signed in");
           console.log(user);
+          document.querySelector('.username').innerHTML = user['displayName'];
 
           setTimeout(() => {
-          document.querySelector('.username').innerHTML = user['displayName'];
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
         }, 1000);

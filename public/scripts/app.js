@@ -6,6 +6,7 @@ const newNameForm = document.querySelector('.new-name');
 const updateMssg = document.querySelector('.update-mssg');
 const rooms = document.querySelector('.chat-rooms');
 const userp = document.querySelector('.username');
+const signoutButton = document.querySelector('.signout-btn');
 var username;
 
 // add a new chat
@@ -27,18 +28,15 @@ newChatForm.addEventListener('submit', e => {
     .catch(err => console.log(err));
 });
 
-// // update the username
-// newNameForm.addEventListener('submit', e => {
-//   e.preventDefault();
-//   // update name via chatroom
-//   const newName = newNameForm.name.value.trim(); //can use .name as input field has id=name
-//   chatroom.updateName(newName);
-//   // reset the form
-//   newNameForm.reset();
-//   // show then hide the update message
-//   updateMssg.innerText = `Your name was updated to ${newName}`;
-//   setTimeout(() => updateMssg.innerText = '', 3000);
-// });
+// signout
+signoutButton.addEventListener('click', e => {
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+  });
+});
+   
 
 // update the chat room
 rooms.addEventListener('click', e => {
