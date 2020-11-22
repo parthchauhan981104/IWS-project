@@ -40,6 +40,7 @@ h1 {
 .nav-user{
   background: #bb3b0e;
   font-size: 0.8em;
+  display:inline;
 }
 .ur-msg{
   background: #f9f9f9;
@@ -67,6 +68,9 @@ h1 {
   width: 40px;
   border-radius: 100%;
 }
+.nav-google-img{
+  display:inline;
+}
 .time{
   font-size: 0.7em;
   color: #999;
@@ -93,6 +97,19 @@ p.message{
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  display: inline;
+}
+.speak-btn{
+  display: inline;
+  margin-left: 30px;
+  border: none;
+  background-color: #fff;
+}
+.speak-btn:active {
+  transform: scale(0.98);
+}
+.speak-btn:focus{ 
+  outline: none !important;
 }
 .time{
   font-size: 0.8em;

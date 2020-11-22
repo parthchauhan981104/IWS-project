@@ -18,6 +18,7 @@ class ChatUI {
           <span class="time">${when}</span>
         </div>
         <p class="message mt-1 ml-5">${data.message}</p>
+        <img class="speak-btn user-img" onclick=speakButton('${data.message}') src="speak.png">
       </li>
     `;
     this.list.innerHTML += html;

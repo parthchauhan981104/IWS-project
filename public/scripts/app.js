@@ -62,9 +62,25 @@ rooms.addEventListener('click', e => {
 });
 
 
+// Init speech synth
+const speech = new SpeechSynthesisUtterance();
+speech.text = "Welcome to Ninja Chat";
+speechSynthesis.speak(speech);
+
+function speakButton (text) {
+  speak(text);
+}
+
+function speak(text) {
+  speech.text = text;
+  speechSynthesis.speak(speech);
+}
+
+
 // class instances
 const chatUI = new ChatUI(chatList);
 const chatroom = new Chatroom('gaming', username);
+
 
 // get chats & render
 chatroom.getChats(data => {
