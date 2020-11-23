@@ -68,6 +68,11 @@ h1 {
   width: 40px;
   border-radius: 100%;
 }
+.action-img{
+  height:30px;
+  width: 30px;
+  border-radius: 100%;
+}
 .nav-google-img{
   display:inline;
 }

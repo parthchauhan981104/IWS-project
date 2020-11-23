@@ -68,6 +68,7 @@ speech.text = "Welcome to Ninja Chat";
 speechSynthesis.speak(speech);
 
 function speakButton (text) {
+  console.log(text);
   speak(text);
 }
 
@@ -75,6 +76,25 @@ function speak(text) {
   speech.text = text;
   speechSynthesis.speak(speech);
 }
+
+// function translate() {
+//   fetch("https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=auto&target=fr&input=Hello", {
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-host": "systran-systran-platform-for-language-processing-v1.p.rapidapi.com",
+// 		"x-rapidapi-key": "c6a47930c0msh7f9ff39574c50b7p1063fbjsn991ebc0d9702"
+// 	}
+//   })
+//   .then(res => res.json())
+//   .then(data => {
+//     console.log(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+// }
+
+// translate();
 
 
 // class instances
