@@ -8,6 +8,7 @@ const rooms = document.querySelector('.chat-rooms');
 const userp = document.querySelector('.username');
 const signoutButton = document.querySelector('.signout-btn');
 const themeSwitch = document.querySelector('.dark-check');
+const newMessageText = document.querySelector('#newmessage');
 var username;
 
 
@@ -62,13 +63,13 @@ rooms.addEventListener('click', e => {
   }
 });
 
-
+////////////////////////////////////////////////////////////////////////
 //dark mode
 themeSwitch.addEventListener('change', () => {
   var links = document.getElementsByTagName('link');
-  if(links.length==3){  //need to update this value if I ever add anymore link tags
+  if(links.length == 4){  //need to update this value if I ever add anymore link tags
 
-    links[2].remove();
+    links[links.length-1].remove();
 
   } else{
 
@@ -86,8 +87,8 @@ themeSwitch.addEventListener('change', () => {
     }
 });
 
-
-// Init speech synth
+////////////////////////////////////////////////////////////////////////
+// Init speech synth - used to read out received messages
 const speech = new SpeechSynthesisUtterance();
 speech.text = "Welcome to Ninja Chat";
 speechSynthesis.speak(speech);
@@ -102,7 +103,53 @@ function read(text) {
   speechSynthesis.speak(speech);
 }
 
+////////////////////////////////////////////////////////////////////////
+// Speech recognition works only on chrome - need to check browser
+var isChromium = window.chrome;
+var winNav = window.navigator;
+var vendorName = winNav.vendor;
+var isOpera = typeof window.opr !== "undefined";
+var isIEedge = winNav.userAgent.indexOf("Edge") > -1;
+var isIOSChrome = winNav.userAgent.match("CriOS");
 
+if (isIOSChrome) {
+   // is Google Chrome on IOS
+} else if(
+  isChromium !== null &&
+  typeof isChromium !== "undefined" &&
+  vendorName === "Google Inc." &&
+  isOpera === false &&
+  isIEedge === false
+) {
+    // is Google Chrome
+    console.log('On chrome - will use speech recognition');
+    window.SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+    var recognition = new window.SpeechRecognition();
+    document.querySelector('.speak-btn').style.display = 'inline';
+} else { 
+    // not Google Chrome 
+    console.log('Not on chrome - no speech recognition feature');
+}
+
+// Start speaking
+function speakButton() {
+  // Start recognition
+  recognition.start();
+}
+
+// Speak result
+recognition.addEventListener('result', onSpeak);
+
+// Capture user speak
+function onSpeak(e) {
+  const msg = e.results[0][0].transcript;
+  if(msg){
+    newMessageText.value = msg;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
 // //translate code
 // function translate() {
 //   var apiUrl = "google-translate20.p.rapidapi.com/translate?sl=en&text=One&tl=hi";
@@ -123,7 +170,7 @@ function read(text) {
 // }
 // translate();
 
-
+////////////////////////////////////////////////////////////////////////
 // //location code
 // var x = document.getElementById("demo");
 // function getLocation() {
@@ -141,6 +188,7 @@ function read(text) {
 // getLocation();
 
 
+////////////////////////////////////////////////////////////////////////
 // class instances
 const chatUI = new ChatUI(chatList);
 const chatroom = new Chatroom('gaming', username);

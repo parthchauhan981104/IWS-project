@@ -83,7 +83,7 @@ h1 {
   font-size: 0.8em;
   /* display: flex; */
   max-height: 40%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .chat-window::-webkit-scrollbar {
@@ -121,6 +121,9 @@ p.message{
 }
 .read-btn:focus{ 
   outline: none !important;
+}
+.speak-btn{
+  display: none;
 }
 .dark-mode-switch{
   display: none;

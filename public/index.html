@@ -3,6 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="ninja1.png" type="image/gif" sizes="16x16">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <!-- <link rel="stylesheet" href="styles-dark.css"> -->
@@ -48,6 +49,9 @@
           </div>
           <textarea name="newmessage" id="newmessage" cols="30" class="form-control" rows="1" placeholder="Enter here..." required></textarea>
           <div class="input-group-append">
+            <button class="btn btn-sm speak-btn" type="button" onclick="speakButton();">
+              Speak
+            </button>
             <button type="submit" class="btn btn-lg">
               Send
             </button>
