@@ -126,10 +126,13 @@ if (isIOSChrome) {
     window.SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
     var recognition = new window.SpeechRecognition();
+    // Speak result
+    recognition.addEventListener('result', onSpeak);
     document.querySelector('.speak-btn').style.display = 'inline';
 } else { 
     // not Google Chrome 
     console.log('Not on chrome - no speech recognition feature');
+    newMessageText.classList.add('mr-1')
 }
 
 // Start speaking
@@ -137,9 +140,6 @@ function speakButton() {
   // Start recognition
   recognition.start();
 }
-
-// Speak result
-recognition.addEventListener('result', onSpeak);
 
 // Capture user speak
 function onSpeak(e) {
