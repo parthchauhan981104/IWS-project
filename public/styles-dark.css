@@ -1,0 +1,31 @@
+body {
+  background: rgb(27, 27, 27);
+}
+.main-container{
+  background: #36393b;
+}
+h6{
+  color:white;
+}
+#newmessage{
+  background: rgb(10, 10, 10);
+  color:white;
+}
+.ur-msg{
+  background: #36393b;
+  color: #bfced8;
+}
+.btn{
+  background: #bb3b0e;
+  color: white;
+}
+.list-group-item{
+  background: rgb(10, 10, 10);
+  color: white;
+}
+.list-group-item:hover{
+  background-color: #4c4a4a;
+}
+.read-btn{
+  background: #000;
+}

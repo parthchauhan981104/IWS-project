@@ -7,6 +7,7 @@ const updateMssg = document.querySelector('.update-mssg');
 const rooms = document.querySelector('.chat-rooms');
 const userp = document.querySelector('.username');
 const signoutButton = document.querySelector('.signout-btn');
+const themeSwitch = document.querySelector('.dark-check');
 var username;
 
 
@@ -62,39 +63,82 @@ rooms.addEventListener('click', e => {
 });
 
 
+//dark mode
+themeSwitch.addEventListener('change', () => {
+  var links = document.getElementsByTagName('link');
+  if(links.length==3){  //need to update this value if I ever add anymore link tags
+
+    links[2].remove();
+
+  } else{
+
+    // Get HTML head element
+    var head = document.getElementsByTagName('HEAD')[0];   
+    // Create new link Element 
+    var link = document.createElement('link'); 
+    // set the attributes for link element  
+    link.rel = 'stylesheet';  
+    link.type = 'text/css'; 
+    link.href = 'styles-dark.css';  
+    // Append link element to HTML head 
+    head.appendChild(link);
+
+    }
+});
+
+
 // Init speech synth
 const speech = new SpeechSynthesisUtterance();
 speech.text = "Welcome to Ninja Chat";
 speechSynthesis.speak(speech);
 
-function speakButton (text) {
-  console.log(text);
-  speak(text);
+function readButton (text) {
+  // console.log(text);
+  read(text);
 }
 
-function speak(text) {
+function read(text) {
   speech.text = text;
   speechSynthesis.speak(speech);
 }
 
+
+// //translate code
 // function translate() {
-//   fetch("https://systran-systran-platform-for-language-processing-v1.p.rapidapi.com/translation/text/translate?source=auto&target=fr&input=Hello", {
+//   var apiUrl = "google-translate20.p.rapidapi.com/translate?sl=en&text=One&tl=hi";
+//   var finalUrl = 'https://cors-anywhere.herokuapp.com/' + apiUrl;
+//   fetch(finalUrl, {
 // 	"method": "GET",
 // 	"headers": {
-// 		"x-rapidapi-host": "systran-systran-platform-for-language-processing-v1.p.rapidapi.com",
+// 		"x-rapidapi-host": "google-translate20.p.rapidapi.com",
 // 		"x-rapidapi-key": "c6a47930c0msh7f9ff39574c50b7p1063fbjsn991ebc0d9702"
 // 	}
-//   })
-//   .then(res => res.json())
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+// })
+// .then(response => {
+// 	console.log(response);
+// })
+// .catch(err => {
+// 	console.log(err);
+// });
+// }
+// translate();
+
+
+// //location code
+// var x = document.getElementById("demo");
+// function getLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showPosition);
+//   } else {
+//     alert("Geolocation is not supported by this browser.");
+//   }
 // }
 
-// translate();
+// function showPosition(position) {
+//   console.log("Latitude: " + position.coords.latitude +
+//   "Longitude: " + position.coords.longitude);
+// }
+// getLocation();
 
 
 // class instances

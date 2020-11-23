@@ -5,25 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="styles-dark.css"> -->
   <title>Ninja Chat</title>
 </head>
 <body>
   <!-- initial loading screen before authentication -->
   <div class="loading-div container text-center">
+    <img class="loading-img" src="ninjachat.gif" alt="">
     <img class="loading-img" src="loading.gif" alt="">
   </div>
 
   <!-- container & title -->
   <div class="main-container container my-4 p-2">
     <div class="navbar m-auto fixed-top text-center">
-      <strong class="p-1 btn-dark"><i><img class="user-img nav-google-img mr-2" src="" alt=""><p class='nav-user align-middle p-2 mt-3'></p></i></strong>
+      <strong class="p-2 btn-dark mt-3 rounded"><i><img class="user-img nav-google-img mr-2" src="" alt=""><p class='nav-user align-middle p-2 mt-1'></p></i></strong>
       <button class="signout-btn btn mt-1 float-right">Sign Out</button>
     </div>
 
     <div class="my-4 text-center header">
       <h1 class="my-4 text-center">Ninja Chat</h1>
       <!-- buttons for chatrooms -->
-      <div class="my-2">Choose a chatroom:</div>
+      <h6 class="my-2">Choose a chatroom:</h6>
       <div class="container chat-rooms mb-3 text-center">
         <button class="chat-room btn my-2" id="general">#general</button>
         <button class="chat-room btn my-2" id="gaming">#gaming</button>
@@ -44,34 +46,25 @@
           <div class="input-group-prepend ur-msg">
             <div class="input-group-text ur-msg">Your message:</div>
           </div>
-          <textarea name="newmessage" id="newmessage" cols="30" class="form-control" rows="1" placeholder="Enter message..." required></textarea>
-          <!-- <input type="text" id="message" class="form-control" required> -->
+          <textarea name="newmessage" id="newmessage" cols="30" class="form-control" rows="1" placeholder="Enter here..." required></textarea>
           <div class="input-group-append">
             <button type="submit" class="btn btn-lg">
               Send
             </button>
-            <!-- <input type="submit" class="btn btn-lg" value="send"> -->
           </div>
         </div>
       </form>
     </div>
 
-    <!-- <div class="fixed-bottom w-50 m-auto text-center">
-       <form class="new-name mb-3 float-right">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <div class="input-group-text">Update name:</div>
-          </div>
-          <input type="text" id="name" class="form-control" required>
-          <div class="input-group-append">
-            <input type="submit" class="btn" value="update">
-          </div>
-        </div>
-        <div class="update-mssg text-center my-2"></div>
-      </form>
-    </div> -->
     <p class="username" style="display: none;"></p>
 
+  </div>
+
+  <div class="dark-mode-switch">
+    <label class="switch dark-mode-switch">
+      <input type="checkbox" class="dark-check">
+      <span class="slider round"></span>
+    </label>
   </div>
   
   <script src="scripts/date_fns.js"></script>
@@ -113,8 +106,9 @@
         setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
+          document.querySelector('.dark-mode-switch').style.display = 'inline';
           document.querySelector('.chat-window').scrollTop = document.querySelector('.chat-window').scrollHeight;
-        }, 1000);
+        }, 1200);
 
       } else {
         // No user is signed in.
@@ -136,8 +130,9 @@
           setTimeout(() => {
           document.querySelector('.loading-div').style.display = 'none';
           document.querySelector('.main-container').style.display = 'flex';
+          document.querySelector('.dark-mode-switch').style.display = 'inline';
           document.querySelector('.chat-window').scrollTop = document.querySelector('.chat-window').scrollHeight;
-        }, 1000);
+        }, 1200);
 
         }).catch(function(error) {
           // Handle Errors here.
