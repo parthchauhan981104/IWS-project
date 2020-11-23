@@ -83,8 +83,18 @@ h1 {
   font-size: 0.8em;
   /* display: flex; */
   max-height: 40%;
-  overflow-y:auto;
+  overflow-y: scroll;
   overflow-x: hidden;
+}
+.chat-window::-webkit-scrollbar {
+  width: 1em;
+}
+.chat-window::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background-color: #bb3b0e;
+  /* outline: 1px solid #bb3b0e; */
 }
 #newmessage{
   font-size: 1.5em;
