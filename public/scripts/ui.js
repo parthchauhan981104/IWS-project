@@ -11,6 +11,9 @@ class ChatUI {
       { addSuffix:true } // adds 'ago'. example - 1 day ago
     );
     // console.log(data);
+    var text = data.message;
+    var result = text.replace(/(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z09+&@#\/%=~_|])/img, 
+    '<a target="_blank" href="$1">$1</a>');
     const html = `
       <li class="list-group-item container">
         <div class="user-info-div mr-2 my-1">
@@ -19,7 +22,7 @@ class ChatUI {
           <span class="time">${when}</span>
         </div>
         <div class="mt-1 ml-5">
-          <p class="message">${data.message}</p>
+          <span class="message">${result}</span>
           <img title="read" class="read-btn action-img float-right" onclick="readButton('${data.message}');" src="read.png">
         </div
       </li>

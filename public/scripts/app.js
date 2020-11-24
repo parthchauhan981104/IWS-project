@@ -75,7 +75,7 @@ roomsGroup.addEventListener('click', e => {
 //dark mode
 themeSwitch.addEventListener('change', () => {
   var links = document.getElementsByTagName('link');
-  if(links.length == 4){  //need to update this value if I ever add anymore link tags
+  if(links.length == 4){  //need to update this value if I ever add anymore <link> tags
 
     links[links.length-1].remove();
 
@@ -199,7 +199,7 @@ function onSpeak(e) {
 ////////////////////////////////////////////////////////////////////////
 // class instances
 const chatUI = new ChatUI(chatList);
-const chatroom = new Chatroom('gaming', username);
+const chatroom = new Chatroom('general', username);
 
 
 // get chats & render

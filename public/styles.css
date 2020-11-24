@@ -110,13 +110,17 @@ h1 {
 .list-group-item:hover{
   background-color: #eeeeee;
 }
-p.message{
+span.message{
   max-width: 5%;
   font-size: 1.2em;
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
   display: inline;
+}
+a:hover{
+  text-decoration: none;
+  color: #bb3b0e;
 }
 .read-btn{
   display: inline;
