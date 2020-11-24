@@ -38,7 +38,7 @@ h1 {
 }
 .nav-user{
   background: #bb3b0e;
-  font-size: 0.6em;
+  font-size: 0.7em;
   display:inline;
 }
 .ur-msg{
@@ -52,15 +52,16 @@ h1 {
   outline: none !important;
   box-shadow: none !important;
 }
-.btn:active {
-  transform: scale(0.98);
+.btn:hover{
+  transform: scale(1.02);
+  color:white;
 }
 .btn:focus{ 
   outline: none !important;
 }
 .username{
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 .user-img{
   height:40px;
@@ -76,11 +77,18 @@ h1 {
   display:inline;
 }
 .time{
-  font-size: 0.7em;
+  font-size: 0.9em;
   color: #999;
 }
+.current-room{
+  background-color: #ea2c62;
+  transition: none;
+}
+.chat-room:hover{
+  background-color: #8d93ab;
+}
 .chat-window{
-  font-size: 0.8em;
+  font-size: 1em;
   /* display: flex; */
   max-height: 40%;
   overflow-y: auto;
@@ -97,7 +105,7 @@ h1 {
   /* outline: 1px solid #bb3b0e; */
 }
 #newmessage{
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 .list-group-item:hover{
   background-color: #eeeeee;

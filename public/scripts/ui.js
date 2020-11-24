@@ -20,7 +20,7 @@ class ChatUI {
         </div>
         <div class="mt-1 ml-5">
           <p class="message">${data.message}</p>
-          <img title="read" class="read-btn action-img" onclick="readButton('${data.message}');" src="read.png">
+          <img title="read" class="read-btn action-img float-right" onclick="readButton('${data.message}');" src="read.png">
         </div
       </li>
     `;

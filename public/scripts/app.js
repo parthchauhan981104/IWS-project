@@ -4,7 +4,8 @@ const chatWindow = document.querySelector('.chat-window');
 const newChatForm = document.querySelector('.new-chat');
 const newNameForm = document.querySelector('.new-name');
 const updateMssg = document.querySelector('.update-mssg');
-const rooms = document.querySelector('.chat-rooms');
+const roomsGroup = document.querySelector('.chat-rooms');
+const rooms = document.getElementsByClassName('chat-room');
 const userp = document.querySelector('.username');
 const signoutButton = document.querySelector('.signout-btn');
 const themeSwitch = document.querySelector('.dark-check');
@@ -49,11 +50,18 @@ signoutButton.addEventListener('click', e => {
   });
 });
 
+//remove current-room class from all rooms
+function removeCurrentRoom () {
+  [...rooms].forEach(room => {
+    room.classList.remove('current-room');
+  });
+}
 
 // update the chat room
-rooms.addEventListener('click', e => {
+roomsGroup.addEventListener('click', e => {
   if(e.target.tagName === 'BUTTON'){
     chatUI.clear();
+    removeCurrentRoom();
     chatroom.updateRoom(e.target.getAttribute('id'));  // unsub from old room realtime listener
     chatroom.getChats(chat => {
       chatUI.render(chat);
@@ -132,7 +140,7 @@ if (isIOSChrome) {
 } else { 
     // not Google Chrome 
     console.log('Not on chrome - no speech recognition feature');
-    newMessageText.classList.add('mr-1')
+    newMessageText.classList.add('mr-2')
 }
 
 // Start speaking
@@ -150,7 +158,7 @@ function onSpeak(e) {
 }
 
 ////////////////////////////////////////////////////////////////////////
-// //translate code
+// //translate code - requires new API Key after signing with credit card
 // function translate() {
 //   var apiUrl = "google-translate20.p.rapidapi.com/translate?sl=en&text=One&tl=hi";
 //   var finalUrl = 'https://cors-anywhere.herokuapp.com/' + apiUrl;

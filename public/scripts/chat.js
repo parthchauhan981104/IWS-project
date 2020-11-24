@@ -38,5 +38,6 @@ class Chatroom {
     if(this.unsub){ // unsub the realtime listener first as its still listening for old room
       this.unsub();
     }
+    document.querySelector(`#${room}`).classList.add('current-room');
   }
 }
