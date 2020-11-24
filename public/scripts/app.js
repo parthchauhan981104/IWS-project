@@ -153,7 +153,7 @@ function speakButton() {
 function onSpeak(e) {
   const msg = e.results[0][0].transcript;
   if(msg){
-    newMessageText.value = msg;
+    newMessageText.value = msg.charAt(0).toUpperCase() + msg.slice(1);
   }
 }
 
