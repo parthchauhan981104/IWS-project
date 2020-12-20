@@ -10,7 +10,7 @@ class ChatUI {
       data.created_at.toDate(),
       { addSuffix:true } // adds 'ago'. example - 1 day ago
     );
-    // console.log(data);
+    // console.log(JSON.stringify(data.message));
     var text = data.message;
     var result = text.replace(/(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z09+&@#\/%=~_|])/img, 
     '<a target="_blank" href="$1">$1</a>');
@@ -21,9 +21,9 @@ class ChatUI {
           <span class="username mx-1">${data.username}</span>
           <span class="time">${when}</span>
         </div>
-        <div class="mt-1 ml-5">
+        <div class="msg-div mt-1 ml-5">
           <span class="message">${result}</span>
-          <img title="read" class="read-btn action-img float-right" onclick="readButton('${data.message}');" src="read.png">
+          <img title="read" class="read-btn action-img float-right" onclick="readButton('${data.message.replace(/'/g, "\\'")}');" src="read.png">
         </div
       </li>
     `;

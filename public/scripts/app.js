@@ -147,6 +147,10 @@ if (isIOSChrome) {
 function speakButton() {
   // Start recognition
   recognition.start();
+  document.querySelector('.speak-btn').classList.add('sp-active');
+  setTimeout(() => {
+    document.querySelector('.speak-btn').classList.remove('sp-active');
+  },5000);
 }
 
 // Capture user speak
@@ -155,6 +159,7 @@ function onSpeak(e) {
   if(msg){
     newMessageText.value = msg.charAt(0).toUpperCase() + msg.slice(1);
   }
+  document.querySelector('.speak-btn').classList.remove('sp-active');
 }
 
 ////////////////////////////////////////////////////////////////////////
